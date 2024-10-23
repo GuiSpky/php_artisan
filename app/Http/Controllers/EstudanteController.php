@@ -14,7 +14,7 @@ class EstudanteController extends Controller
     {
         // Buscar os clientes no Banco de dados;
         $estudantes = Estudantes::get(); // :: significa que o método utilizado é estatico
-
+        // dd($estudantes);
         // Mostrar um FrontEnd listando os clientes.
         return view('estudantes.index', [
             'estudantes' => $estudantes
@@ -44,7 +44,10 @@ class EstudanteController extends Controller
      */
     public function show(string $id)
     {
-        //
+
+         $estudantes = Estudantes::find($id);
+
+         return view('estudantes.show', ['estudante'=> $estudantes]);
     }
 
     /**
@@ -68,6 +71,9 @@ class EstudanteController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $estudantes = Estudantes::find($id);
+        $estudantes->delete(); //deletar o aluno
+        return redirect('/estudantes');
+
     }
 }

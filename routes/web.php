@@ -29,5 +29,7 @@ Route::post('/clients', [ClientController::class, 'store'])->name('clients.store
 
 Route::get('/estudantes', [EstudanteController::class, 'index'])->name('estudantes.index');
 Route::get('/estudantes/create', [EstudanteController::class, 'create'])->name('estudantes.create');
+Route::get('/estudantes/{id}', [EstudanteController::class, 'show'])->name('estudantes.show');
+Route::get('/estudantes/apagar/{id}', [EstudanteController::class, 'destroy'])->name('estudantes.destroy');
 
 Route::post('/estudantes', [EstudanteController::class, 'store'])->name('estudantes.store');
