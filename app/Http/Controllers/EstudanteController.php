@@ -55,7 +55,10 @@ class EstudanteController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $estudante = Estudantes::find($id);
+        return view('estudantes.edit',[
+            'estudantes' => $estudante
+        ]);
     }
 
     /**
@@ -63,7 +66,15 @@ class EstudanteController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $estudantes = Estudantes::find($id);
+
+        $estudantes-> update([
+            'nome' => $request->nome,
+            'cpf' => $request->cpf,
+            'nascimento' => $request->nascimento
+        ]);
+
+        return redirect('/estudantes');
     }
 
     /**
@@ -72,7 +83,7 @@ class EstudanteController extends Controller
     public function destroy(string $id)
     {
         $estudantes = Estudantes::find($id);
-        $estudantes->delete(); //deletar o aluno
+        $estudantes->delete();
         return redirect('/estudantes');
 
     }

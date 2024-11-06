@@ -16,6 +16,17 @@
                     <td>{{$client->id}}</td>
                     <td><a href="{{route('clients.show', $client)}}">{{$client->nome}}</a></td>
                     <td>{{$client->endereco}}</td>
+                    <td><a href="{{route('clients.edit', $client)}}" class="btn btn-primary">Editar</a></td>
+                    <td><form action="{{route('clients.destroy', $client)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger"
+                        type="submit"
+                        onclick="return confirm('Deseja realmente apagar?')">
+                            Apagar
+                        </button>
+                    </form></td>
+
                 </tr>
             @endforeach
         </tbody>
